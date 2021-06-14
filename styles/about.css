@@ -1,0 +1,14 @@
+/* About
+====================== */
+.about__inner {
+  padding: 150px 0 40px;
+  text-align: center;
+}
+
+.about__information {
+  padding: 25px 0;
+  line-height: 20px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  opacity: 1;
+}

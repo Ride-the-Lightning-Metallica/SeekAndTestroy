@@ -1,0 +1,174 @@
+/* The styles are the same for all pages */
+body {
+  margin: 0;
+
+  font-family: 'Raleway', sans-serif;
+  font-size: 14px;
+  color: #fff;
+  -webkit-font-smoothing: antialiased;
+
+  background-color: #7f7a79;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
+/* Container
+===================== */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* Header
+===================== */
+.header {
+  width: 100%;
+  height: 110px;
+  position: absolute;
+  z-index: 1000;
+  background-color: #222228;
+}
+
+.header__inner {
+  padding: 35px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__logo {
+  display: flex;
+}
+
+.header__logo__image {
+  height: 38px;
+  margin-right: 5px;
+}
+
+.header__logo__title {
+  font-family: 'Staatliches';
+  font-size: 32px;
+  color: #c2200c;
+}
+
+.title {
+  font-size: 45px;
+  font-family: 'Staatliches';
+  margin-bottom: 10px;
+  opacity: 0.75;
+}
+
+.subtitle {
+  font-size: 17px;
+  font-family: 'Raleway';
+  margin-bottom: 10px;
+  text-transform: lowercase;
+  opacity: 0.75;
+}
+
+/* Navigation
+===================== */
+.nav {
+  display: flex;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.nav__link {
+  transition: opacity 0.2s linear;
+  opacity: 0.75;
+  margin-left: 50px;
+}
+
+.nav__link:first-child {
+  margin-left: 0;
+}
+
+.nav__link:hover {
+  opacity: 1;
+}
+
+.nav__menu__dropdown {
+  margin-left: 50px;
+}
+
+.nav__menu {
+  display: none;
+  position: absolute;
+  padding: 0;
+  list-style: none;
+}
+
+.nav__menu__link {
+  padding: 7px 4px;
+  background-color: #222228;
+  opacity: 0.75;
+
+  transition: opacity 0.2s linear;
+}
+
+.nav__menu__link:hover {
+  opacity: 1;
+}
+
+/* Footer
+===================== */
+.footer {
+  padding: 40px 0;
+  background-color: #222228;
+}
+
+.footer__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 30px;
+}
+
+.footer__social {
+  display: flex;
+  justify-content: center;
+  margin-top: 5px;
+}
+
+.social__item {
+  margin-right: 10px;
+}
+
+.social__icon {
+  width: 20px;
+  height: 20px;
+  fill: #fff;
+  opacity: 0.75;
+
+  transition: opacity 0.2s ease-in;
+}
+
+.social__icon:hover {
+  opacity: 1;
+}
