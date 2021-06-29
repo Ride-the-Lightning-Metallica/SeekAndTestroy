@@ -1,5 +1,5 @@
-from typing import List
 from django.shortcuts import render
+from django.views.generic import DetailView
 
 from main.models import Test
 
@@ -15,3 +15,7 @@ def profile(request):
 
 def archive(request):
     return render(request, r'main\archive.html', {})
+
+class TestDetailView(DetailView):
+    model = Test
+    template_name = "main/test_detail.html"

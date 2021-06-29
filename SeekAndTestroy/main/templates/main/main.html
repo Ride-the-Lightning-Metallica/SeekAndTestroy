@@ -1,8 +1,12 @@
-{% extends 'layout/base.html' %} {% load static %} {% block additional_style %}
+{% extends 'layout/base.html' %}
+{% load static %}
 {% load filters %}
 
-<link rel="stylesheet" href="{% static 'main/styles/main.css' %}" />
-{% endblock additional_style %} {% block content %}
+{% block additional_style %}
+    <link rel="stylesheet" href="{% static 'main/styles/main.css' %}" />
+{% endblock additional_style %} 
+
+{% block content %}
 
 <!-- Intro -->
 <div class="intro">
@@ -43,7 +47,7 @@
             <div class="content__item">
                 <h4 class="content__item__title">{{ test.title }}</h4>
                 <img
-                    src="{% static 'main/images/test_image.jpg' %}"
+                    src="{{ test.image.url }}"
                     alt="test image"
                     class="content__item__img"
                 />
@@ -72,9 +76,12 @@
                                 {{ test.difficulty }}
                             </span>
                         </p>
-                        <a href="test_detail.html" class="content__item__button"
-                            >Go!</a
+                        <a
+                            href="{{ test.get_absolute_url }}"
+                            class="content__item__button"
                         >
+                            Go!
+                        </a>
                     </div>
                 </div>
             </div>
