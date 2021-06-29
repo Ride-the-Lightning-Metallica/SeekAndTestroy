@@ -1,0 +1,172 @@
+/* Intro
+===================== */
+.intro__inner {
+  text-align: center;
+  padding: 150px 0 40px;
+}
+
+.intro__search {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.intro__search__field {
+  border-radius: 3px;
+  height: 25px;
+  border: none;
+  font-family: 'Raleway';
+  font-size: 14px;
+  padding: 4px;
+}
+
+.intro__search__field:focus-visible {
+  outline: none;
+  border: 2px solid #222228;
+}
+
+.intro__search__img {
+  margin-left: 8px;
+}
+
+.sorted_by {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sorted_by__title {
+  font-size: 13px;
+  margin-right: 10px;
+  opacity: 0.75;
+}
+
+.sorted_by__button {
+  margin-right: 10px;
+  cursor: pointer;
+  background-color: #7f7a79;
+  font-family: 'Raleway';
+  text-transform: uppercase;
+  border: 2px solid #222228;
+  border-radius: 3px;
+  color: #fff;
+
+  transition: background-color 0.3s linear;
+}
+
+.sorted_by__button:hover {
+  background-color: #222228;
+}
+
+/* Content
+===================== */
+.content__inner {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.content__item {
+  width: 33.33333%;
+  margin-bottom: 15px;
+  padding: 0 10px;
+}
+
+.content__item__title {
+  background-color: #222228;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  padding: 10px;
+  color: #c2200c;
+  font-family: 'Staatliches';
+  font-size: 22px;
+  word-spacing: 4px;
+}
+
+.content__item__img {
+  width: 100%;
+}
+
+.content__item__information {
+  background-color: #222228;
+  padding: 10px 8px;
+  margin-top: -3px;
+  line-height: 20px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.content__item__description {
+  opacity: 0.75;
+}
+
+.content__item__raiting {
+  display: flex;
+}
+
+.raiting__item {
+  color: #f3f356;
+  font-size: 22px;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-left: 3px;
+}
+
+.raiting__item:first-child {
+  margin-left: 0;
+}
+
+.content__item__button {
+  display: inline-block;
+  padding: 5px 10px;
+  background-color: rgb(70, 182, 42);
+  border-radius: 5px;
+
+  transition: background-color 0.2s ease-out;
+}
+
+.content__item__button:hover {
+  background-color: rgb(63, 161, 38);
+}
+
+/* Pagination
+===================== */
+.pagination__inner {
+  display: flex;
+  justify-content: center;
+}
+
+.paginator {
+  display: inline-block;
+  padding: 0;
+  margin: 30px 0;
+}
+
+.paginator li {
+  display: inline;
+}
+
+.paginator li a {
+  color: #fff;
+  opacity: 0.75;
+  font-family: 'Staatliches';
+  font-size: 17px;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color 0.3s linear, color 0.3s linear;
+}
+
+.paginator li a.active {
+  background-color: #222228;
+  color: #c2200c;
+  opacity: 1;
+}
+
+.paginator li a:hover:not(.active) {
+  background-color: #ddd;
+  color: #222228;
+}

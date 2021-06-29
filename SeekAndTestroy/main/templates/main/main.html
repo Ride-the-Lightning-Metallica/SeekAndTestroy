@@ -1,0 +1,105 @@
+{% extends 'layout/base.html' %} {% load static %} {% block additional_style %}
+{% load filters %}
+
+<link rel="stylesheet" href="{% static 'main/styles/main.css' %}" />
+{% endblock additional_style %} {% block content %}
+
+<!-- Intro -->
+<div class="intro">
+    <div class="container">
+        <div class="intro__inner">
+            <div class="intro__search">
+                <input
+                    type="text"
+                    class="intro__search__field"
+                    placeholder="Search test"
+                />
+                <div class="intro__search__img">
+                    <a href="#"
+                        ><img
+                            src="{% static 'main/images/loupe.png' %}"
+                            alt="loupe"
+                    /></a>
+                </div>
+            </div>
+            <h2 class="title">Take the test now</h2>
+            <h4 class="subtitle">
+                Choose a test from the list, take it and increase your rank
+            </h4>
+            <div class="sorted_by">
+                <h5 class="sorted_by__title">Sorted by:</h5>
+                <button class="sorted_by__button">Date</button>
+                <button class="sorted_by__button">Popularity</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Content -->
+<div class="content">
+    <div class="container">
+        <div class="content__inner">
+            {% for test in tests %}
+            <div class="content__item">
+                <h4 class="content__item__title">{{ test.title }}</h4>
+                <img
+                    src="{% static 'main/images/test_image.jpg' %}"
+                    alt="test image"
+                    class="content__item__img"
+                />
+                <div class="content__item__information">
+                    <p class="content__item__author">
+                        Author: {{ test.author|capfirst }}
+                    </p>
+                    <p class="content__item__description">
+                        {{ test.description|truncatechars:100 }}
+                    </p>
+                    <div class="content__item__raiting">
+                        {% for i in test.raiting|iterable %}
+                        <button class="raiting__item">★</button>
+                        {% endfor %}
+                    </div>
+                    <div
+                        style="
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                        "
+                    >
+                        <p class="content__item__complexity">
+                            Complexity:
+                            <span style="font-size: 17px">
+                                {{ test.difficulty }}
+                            </span>
+                        </p>
+                        <a href="test_detail.html" class="content__item__button"
+                            >Go!</a
+                        >
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<!-- Pagination -->
+<div class="pagination">
+    <div class="container">
+        <div class="pagination__inner">
+            <ul class="paginator">
+                <li><a href="#">«</a></li>
+                <li><a href="#">1</a></li>
+                <li><a class="active" href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#">6</a></li>
+                <li><a href="#">7</a></li>
+                <li><a href="#">»</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

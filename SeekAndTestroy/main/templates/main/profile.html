@@ -1,0 +1,220 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+
+{% block additional_style %}
+  <link rel="stylesheet" href="{% static 'main/styles/profile.css' %}" />
+{% endblock additional_style %}
+
+{% block content %}
+
+    <!-- Profile -->
+    <div class="profile">
+      <div class="container">
+        <div class="profile__inner">
+          <h1 class="title">User profile Metallica</h1>
+          <div class="profile__information">
+            <div class="profile__information__item">
+              <img
+                src="images/user_img.jpg"
+                alt="user image"
+                class="profile__img"
+              />
+            </div>
+            <div class="profile__information__item additional__inforamtion">
+              <p class="profile__information__text">Age: 40 years</p>
+              <p class="profile__information__text">Country: America</p>
+              <p class="profile__information__text">Gender: male</p>
+              <div class="content__item__raiting">
+                <button class="raiting__item">★</button>
+                <button class="raiting__item">★</button>
+                <button class="raiting__item">★</button>
+                <button class="raiting__item">★</button>
+                <button class="raiting__item">★</button>
+              </div>
+            </div>
+            <div class="profile__information__item profile__controls">
+              <button class="profile__button update">Update profile</button>
+              <button class="profile__button delete">Delete profile</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+      <div class="container">
+        <div class="content__inner">
+          <div class="content__item">
+            <h4 class="content__item__title">Title of test</h4>
+            <img
+              src="images/test_image.jpg"
+              alt="test image"
+              class="content__item__img"
+            />
+            <div class="content__item__information">
+              <p class="content__item__author">Author: Metallica</p>
+              <p class="content__item__description">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                Inventore, doloribus. Debitis nam quia aspernatur, impedit ipsum
+                earum distinctio saepe! Rerum.
+              </p>
+              <div class="content__item__raiting">
+                <button class="raiting__item">★</button>
+                <button class="raiting__item">★</button>
+                <button class="raiting__item">★</button>
+                <button class="raiting__item">★</button>
+                <button class="raiting__item">★</button>
+              </div>
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                "
+              >
+                <p class="content__item__complexity">
+                  Complexity: <span style="font-size: 17px">3</span>
+                </p>
+                <a href="#" class="content__item__button">Go!</a>
+                <a
+                  href="#"
+                  class="content__item__button"
+                  style="background-color: rgb(168, 28, 28)"
+                  >Delete</a
+                >
+                <a href="#" class="content__item__button">Update</a>
+              </div>
+            </div>
+          </div>
+          <div class="content__item">
+            <h4 class="content__item__title">Title of test</h4>
+            <img
+              src="images/test_image.jpg"
+              alt="test image"
+              class="content__item__img"
+            />
+            <div class="content__item__information">
+              <p class="content__item__author">Author: Metallica</p>
+              <p class="content__item__description">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                Inventore, doloribus. Debitis nam quia aspernatur, impedit ipsum
+                earum distinctio saepe! Rerum.
+              </p>
+              <div class="content__item__raiting">
+                <button class="raiting__item">★</button>
+                <button class="raiting__item">★</button>
+                <button class="raiting__item">★</button>
+                <button class="raiting__item">★</button>
+                <button class="raiting__item">★</button>
+              </div>
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                "
+              >
+                <p class="content__item__complexity">
+                  Complexity: <span style="font-size: 17px">3</span>
+                </p>
+                <a href="#" class="content__item__button">Go!</a>
+                <a
+                  href="#"
+                  class="content__item__button"
+                  style="background-color: rgb(168, 28, 28)"
+                  >Delete</a
+                >
+                <a href="#" class="content__item__button">Update</a>
+              </div>
+            </div>
+          </div>
+          <div class="content__item">
+            <h4 class="content__item__title">Title of test</h4>
+            <img
+              src="images/test_image.jpg"
+              alt="test image"
+              class="content__item__img"
+            />
+            <div class="content__item__information">
+              <p class="content__item__author">Author: Metallica</p>
+              <p class="content__item__description">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                Inventore, doloribus. Debitis nam quia aspernatur, impedit ipsum
+                earum distinctio saepe! Rerum.
+              </p>
+              <div class="content__item__raiting">
+                <button class="raiting__item">★</button>
+                <button class="raiting__item">★</button>
+                <button class="raiting__item">★</button>
+                <button class="raiting__item">★</button>
+                <button class="raiting__item">★</button>
+              </div>
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                "
+              >
+                <p class="content__item__complexity">
+                  Complexity: <span style="font-size: 17px">3</span>
+                </p>
+                <a href="#" class="content__item__button">Go!</a>
+                <a
+                  href="#"
+                  class="content__item__button"
+                  style="background-color: rgb(168, 28, 28)"
+                  >Delete</a
+                >
+                <a href="#" class="content__item__button">Update</a>
+              </div>
+            </div>
+          </div>
+          <div class="content__item">
+            <h4 class="content__item__title">Title of test</h4>
+            <img
+              src="images/test_image.jpg"
+              alt="test image"
+              class="content__item__img"
+            />
+            <div class="content__item__information">
+              <p class="content__item__author">Author: Metallica</p>
+              <p class="content__item__description">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                Inventore, doloribus. Debitis nam quia aspernatur, impedit ipsum
+                earum distinctio saepe! Rerum.
+              </p>
+              <div class="content__item__raiting">
+                <button class="raiting__item">★</button>
+                <button class="raiting__item">★</button>
+                <button class="raiting__item">★</button>
+                <button class="raiting__item">★</button>
+                <button class="raiting__item">★</button>
+              </div>
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                "
+              >
+                <p class="content__item__complexity">
+                  Complexity: <span style="font-size: 17px">3</span>
+                </p>
+                <a href="#" class="content__item__button">Go!</a>
+                <a
+                  href="#"
+                  class="content__item__button"
+                  style="background-color: rgb(168, 28, 28)"
+                  >Delete</a
+                >
+                <a href="#" class="content__item__button">Update</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+{% endblock content %}

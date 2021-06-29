@@ -1,0 +1,141 @@
+/* Test
+============================= */
+.test__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 150px 0 40px;
+}
+
+.test__content {
+  width: 60%;
+  margin-bottom: 15px;
+  padding: 0 10px 15px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  background-color: #222228;
+}
+
+.test__content__title {
+  padding: 10px;
+  color: #c2200c;
+  font-family: 'Staatliches';
+  font-size: 25px;
+  word-spacing: 4px;
+}
+
+.test__content__img {
+  width: 100%;
+}
+
+.test__content__information {
+  padding: 10px 8px;
+  margin-top: -3px;
+  line-height: 20px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.test__content__description {
+  opacity: 0.75;
+}
+
+.test__content__raiting {
+  display: flex;
+}
+
+.raiting__item {
+  color: #f3f356;
+  font-size: 22px;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-left: 3px;
+}
+
+.raiting__item:first-child {
+  margin-left: 0;
+}
+
+.test__content__question {
+  padding: 10px 8px;
+}
+
+.test__content__question__title {
+  font-weight: 600;
+  opacity: 0.75;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.test__content__question__img {
+  width: 100%;
+  max-height: 490px;
+  margin-bottom: 5px;
+}
+
+.test__content__answer {
+  display: inline-block;
+  padding: 10px 20px;
+  font-weight: 600;
+  opacity: 0.75;
+  font-size: 20px;
+  margin-top: 5px;
+  background-color: #fff;
+  color: #000;
+  width: 85%;
+  cursor: pointer;
+
+  transition: opacity 0.3s ease;
+}
+
+.test__content__answer:hover {
+  opacity: 0.9;
+}
+
+.test__result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 20px;
+  background-color: #222228;
+  width: 40%;
+  padding: 15px 10px;
+}
+
+.test__result__title {
+  color: #c2200c;
+  font-family: 'Staatliches';
+  font-size: 20px;
+  word-spacing: 4px;
+}
+
+.test__content__raiting__active {
+  flex-direction: row-reverse;
+}
+
+.raiting__item__active {
+  margin-left: 0;
+  transition: color 0.2s linear;
+  font-size: 28px;
+  color: #dfdf66;
+}
+
+.raiting__item__active:hover,
+.raiting__item__active:hover ~ .raiting__item__active,
+.raiting__item__active:checked ~ .raiting__item__active:hover {
+  color: #f1f10e;
+}
+
+.test__result__share__text {
+  font-size: 17px;
+  margin-bottom: 10px;
+  opacity: 0.75;
+  transition: opacity 0.2s linear;
+}
+
+.test__result__share__text:hover {
+  opacity: 1;
+}

@@ -1,0 +1,281 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+
+{% block additional_style %}
+  <link rel="stylesheet" href="{% static 'main/styles/archive.css' %}" />
+{% endblock additional_style %}
+
+{% block content %}
+    <!-- Intro -->
+    <div class="intro">
+      <div class="container">
+        <div class="intro__inner">
+          <div class="intro__search">
+            <input
+              type="text"
+              class="intro__search__field"
+              placeholder="Search test"
+            />
+            <div class="intro__search__img">
+              <a href="#"><img src="{% static 'main/images/loupe.png' %}" alt="loupe" /></a>
+            </div>
+          </div>
+          <h2 class="title">Archive of tests</h2>
+          <h4 class="subtitle">All tests for all time are collected here</h4>
+          <div class="sorted_by">
+            <h5 class="sorted_by__title">Sorted by:</h5>
+            <button class="sorted_by__button">Date</button>
+            <button class="sorted_by__button">Popularity</button>
+          </div>
+          <div class="sorted_by">
+            <h5 class="sorted_by__title">Category:</h5>
+            <button class="sorted_by__button">Math</button>
+            <button class="sorted_by__button">Natural</button>
+          </div>
+          <div class="sorted_by">
+            <h5 class="sorted_by__title">First letter:</h5>
+            <button class="sorted_by__button sorted_by__button--letter">
+              A
+            </button>
+            <button class="sorted_by__button sorted_by__button--letter">
+              B
+            </button>
+            <button class="sorted_by__button sorted_by__button--letter">
+              B
+            </button>
+            <button class="sorted_by__button sorted_by__button--letter">
+              B
+            </button>
+            <button class="sorted_by__button sorted_by__button--letter">
+              B
+            </button>
+            <button class="sorted_by__button sorted_by__button--letter">
+              B
+            </button>
+            <button class="sorted_by__button sorted_by__button--letter">
+              B
+            </button>
+            <button class="sorted_by__button sorted_by__button--letter">
+              B
+            </button>
+            <button class="sorted_by__button sorted_by__button--letter">
+              B
+            </button>
+            <button class="sorted_by__button sorted_by__button--letter">
+              B
+            </button>
+            <button class="sorted_by__button sorted_by__button--letter">
+              B
+            </button>
+            <button class="sorted_by__button sorted_by__button--letter">
+              B
+            </button>
+            <button class="sorted_by__button sorted_by__button--letter">
+              B
+            </button>
+            <button class="sorted_by__button sorted_by__button--letter">
+              B
+            </button>
+            <button class="sorted_by__button sorted_by__button--letter">
+              B
+            </button>
+            <button class="sorted_by__button sorted_by__button--letter">
+              B
+            </button>
+            <button class="sorted_by__button sorted_by__button--letter">
+              B
+            </button>
+            <button class="sorted_by__button sorted_by__button--letter">
+              B
+            </button>
+            <button class="sorted_by__button sorted_by__button--letter">
+              B
+            </button>
+            <button class="sorted_by__button sorted_by__button--letter">
+              B
+            </button>
+            <button class="sorted_by__button sorted_by__button--letter">
+              B
+            </button>
+            <button class="sorted_by__button sorted_by__button--letter">
+              B
+            </button>
+            <button class="sorted_by__button sorted_by__button--letter">
+              B
+            </button>
+            <button class="sorted_by__button sorted_by__button--letter">
+              B
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+      <div class="container">
+        <div class="content__inner">
+          <div class="content__item">
+            <h4 class="content__item__title">Title of test</h4>
+            <img
+              src="images/test_image.jpg"
+              alt="test image"
+              class="content__item__img"
+            />
+            <div class="content__item__information">
+              <p class="content__item__author">Author: Metallica</p>
+              <p class="content__item__description">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                Inventore, doloribus. Debitis nam quia aspernatur, impedit ipsum
+                earum distinctio saepe! Rerum.
+              </p>
+              <div class="content__item__raiting">
+                <button class="raiting__item">★</button>
+                <button class="raiting__item">★</button>
+                <button class="raiting__item">★</button>
+                <button class="raiting__item">★</button>
+                <button class="raiting__item">★</button>
+              </div>
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                "
+              >
+                <p class="content__item__complexity">
+                  Complexity: <span style="font-size: 17px">3</span>
+                </p>
+                <a href="#" class="content__item__button">Go!</a>
+              </div>
+            </div>
+          </div>
+          <div class="content__item">
+            <h4 class="content__item__title">Title of test</h4>
+            <img
+              src="images/test_image.jpg"
+              alt="test image"
+              class="content__item__img"
+            />
+            <div class="content__item__information">
+              <p class="content__item__author">Author: Metallica</p>
+              <p class="content__item__description">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                Inventore, doloribus. Debitis nam quia aspernatur, impedit ipsum
+                earum distinctio saepe! Rerum.
+              </p>
+              <div class="content__item__raiting">
+                <button class="raiting__item">★</button>
+                <button class="raiting__item">★</button>
+                <button class="raiting__item">★</button>
+                <button class="raiting__item">★</button>
+                <button class="raiting__item">★</button>
+              </div>
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                "
+              >
+                <p class="content__item__complexity">
+                  Complexity: <span style="font-size: 17px">3</span>
+                </p>
+                <a href="#" class="content__item__button">Go!</a>
+              </div>
+            </div>
+          </div>
+          <div class="content__item">
+            <h4 class="content__item__title">Title of test</h4>
+            <img
+              src="images/test_image.jpg"
+              alt="test image"
+              class="content__item__img"
+            />
+            <div class="content__item__information">
+              <p class="content__item__author">Author: Metallica</p>
+              <p class="content__item__description">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                Inventore, doloribus. Debitis nam quia aspernatur, impedit ipsum
+                earum distinctio saepe! Rerum.
+              </p>
+              <div class="content__item__raiting">
+                <button class="raiting__item">★</button>
+                <button class="raiting__item">★</button>
+                <button class="raiting__item">★</button>
+                <button class="raiting__item">★</button>
+                <button class="raiting__item">★</button>
+              </div>
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                "
+              >
+                <p class="content__item__complexity">
+                  Complexity: <span style="font-size: 17px">3</span>
+                </p>
+                <a href="#" class="content__item__button">Go!</a>
+              </div>
+            </div>
+          </div>
+          <div class="content__item">
+            <h4 class="content__item__title">Title of test</h4>
+            <img
+              src="images/test_image.jpg"
+              alt="test image"
+              class="content__item__img"
+            />
+            <div class="content__item__information">
+              <p class="content__item__author">Author: Metallica</p>
+              <p class="content__item__description">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                Inventore, doloribus. Debitis nam quia aspernatur, impedit ipsum
+                earum distinctio saepe! Rerum.
+              </p>
+              <div class="content__item__raiting">
+                <button class="raiting__item">★</button>
+                <button class="raiting__item">★</button>
+                <button class="raiting__item">★</button>
+                <button class="raiting__item">★</button>
+                <button class="raiting__item">★</button>
+              </div>
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                "
+              >
+                <p class="content__item__complexity">
+                  Complexity: <span style="font-size: 17px">3</span>
+                </p>
+                <a href="#" class="content__item__button">Go!</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pagination -->
+    <div class="pagination">
+      <div class="container">
+        <div class="pagination__inner">
+          <ul class="paginator">
+            <li><a href="#">«</a></li>
+            <li><a href="#">1</a></li>
+            <li><a class="active" href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li><a href="#">6</a></li>
+            <li><a href="#">7</a></li>
+            <li><a href="#">»</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+{% endblock content %}
