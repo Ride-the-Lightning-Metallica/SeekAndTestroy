@@ -81,11 +81,11 @@
                 <span style="margin-left: 5px; font-size: 10px">ᐯ</span></a
               >
               <ul class="nav__menu" id="navMenu">
-                <li class="nav__menu__link"><a href="#">Test category</a></li>
-                <li class="nav__menu__link"><a href="#">Test category</a></li>
-                <li class="nav__menu__link"><a href="#">Test category</a></li>
-                <li class="nav__menu__link"><a href="#">Test category</a></li>
-                <li class="nav__menu__link"><a href="#">Test category</a></li>
+              {% for category in categories %}
+                <li class="nav__menu__link">
+                  <a href="{{ category.get_absolute_url }}">{{ category.title|capfirst }}</a>
+                </li>
+              {% endfor %}
               </ul>
             </div>
             <a href="{% url 'profile' %}" class="nav__link">Profile</a>
@@ -97,7 +97,7 @@
 
     {% block content %}{% endblock content %}
 
-        <!-- Footer -->
+    <!-- Footer -->
     <footer class="footer">
       <div class="container">
         <div class="footer__inner">

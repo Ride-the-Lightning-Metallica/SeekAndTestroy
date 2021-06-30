@@ -26,7 +26,13 @@
                     /></a>
                 </div>
             </div>
-            <h2 class="title">Take the test now</h2>
+            <h2 class="title">
+                {% if is_category_page %}
+                    Tests in the category "{{ category.title }}"
+                {% else %}
+                    Take the test now
+                {% endif %}
+            </h2>
             <h4 class="subtitle">
                 Choose a test from the list, take it and increase your rank
             </h4>

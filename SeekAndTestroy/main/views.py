@@ -1,11 +1,45 @@
 from django.shortcuts import render
-from django.views.generic import DetailView
+from django.views.generic import DetailView, ListView
 
-from main.models import Test
+from main.models import Test, Category
 
-def main(request):
-    tests = Test.objects.all()
-    return render(request, r'main\main.html', {'tests': tests})
+def add_in_context(context):
+    categories = Category.objects.all()
+    context['categories'] = categories
+
+    return context
+
+class TestListView(ListView):
+    model = Test
+    template_name = "main/main.html"
+    context_object_name = 'tests'
+
+    def get_context_data(self, **kwargs):
+        context = add_in_context(super().get_context_data(**kwargs))
+        return context
+
+class TestDetailView(DetailView):
+    model = Test
+    template_name = "main/test_detail.html"
+
+    def get_context_data(self, **kwargs):
+        context = add_in_context(super().get_context_data(**kwargs))
+        return context
+
+class TestListByCategory(ListView):
+    model = Test
+    template_name = "main/main.html"
+    context_object_name = 'tests'
+
+    def get_queryset(self):
+        return Test.objects.filter(category__slug=self.kwargs['slug'])
+
+    def get_context_data(self, **kwargs):
+        context = add_in_context(super().get_context_data(**kwargs))
+        context['category'] = Category.objects.get(slug=self.kwargs['slug'])
+        context['is_category_page'] = True
+        return context
+
 
 def about(request):
     return render(request, r'main\about.html', {})
@@ -16,6 +50,4 @@ def profile(request):
 def archive(request):
     return render(request, r'main\archive.html', {})
 
-class TestDetailView(DetailView):
-    model = Test
-    template_name = "main/test_detail.html"
+
