@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 import os
 from pathlib import Path
+from django.urls import reverse_lazy
 
 from . import local_settings
 
@@ -136,3 +137,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # User
 AUTH_USER_MODEL = 'main.User'
+LOGIN_REDIRECT_URL = reverse_lazy('profile')
+LOGIN_URL = reverse_lazy('login')

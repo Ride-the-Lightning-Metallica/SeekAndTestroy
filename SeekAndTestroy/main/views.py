@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import DetailView, ListView
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.views import LoginView
 
 from main.models import Test, Category
 
@@ -43,10 +45,14 @@ class TestListByCategory(ListView):
 
 
 def about(request):
-    return render(request, r'main\about.html', {})
+    return render(request, r'main\about.html')
 
+@login_required
 def profile(request):
     return render(request, r'main\profile.html', {})
+
+class UserLoginView(LoginView):
+    template_name = 'main/login.html'
 
 def archive(request):
     return render(request, r'main\archive.html', {})

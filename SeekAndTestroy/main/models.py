@@ -11,6 +11,12 @@ class User(AbstractUser):
         validators=[MaxValueValidator(100)], blank=True, null=True,
         verbose_name='Age'
     )
+    image = models.ImageField(
+        upload_to='images/users/',
+        null=True,
+        blank=True,
+        verbose_name='User image'
+    )
     gender = models.CharField(max_length=6, choices=(('male', 'male'), ('female', 'female')))
     country = CountryField()
     raiting = models.IntegerField(
@@ -51,7 +57,7 @@ class Test(models.Model):
         related_name='tests',
         null=True
     )
-    description = models.CharField(
+    description = models.TextField(
         max_length=250,
         verbose_name='Description',
         validators=[MinLengthValidator(100)]
