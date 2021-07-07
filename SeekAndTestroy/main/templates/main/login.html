@@ -14,7 +14,8 @@
 
                 {{ form.as_p }}
                 <input type="hidden" name="next" value="{{ next }}">
-                <input type="submit" value="Log in">
+                <a href="{% url 'registration' %}" class="login__inner__button">Registration</a>
+                <input type="submit" value="Log in" class="login__inner__button">
             </form>
         </div>
     </div>

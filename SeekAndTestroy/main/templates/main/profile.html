@@ -1,94 +1,120 @@
-{% extends 'layout/base.html' %}
+{% extends 'layout/base.html' %} 
 {% load static %}
 {% load filters %}
-
 {% block additional_style %}
-  <link rel="stylesheet" href="{% static 'main/styles/profile.css' %}" />
+    <link rel="stylesheet" href="{% static 'main/styles/profile.css' %}" />
 {% endblock additional_style %}
 
 {% block content %}
 
-    <!-- Profile -->
-    <div class="profile">
-      <div class="container">
+<!-- Profile -->
+<div class="profile">
+    <div class="container">
         <div class="profile__inner">
-          <h1 class="title">User profile {{ user.username }}</h1>
-          <div class="profile__information">
-            <div class="profile__information__item">
-              <img
-                src="{{ user.image.url }}"
-                alt="user image"
-                class="profile__img"
-              />
+            <h1 class="title">User profile {{ user.username }}</h1>
+            <div class="profile__information">
+                <div class="profile__information__item">
+                {% if user.image %}
+                    <img
+                        src="{{ user.image.url }}"
+                        alt="user image"
+                        class="profile__img"
+                    />
+                {% else %}
+                    <img
+                        src="{% static 'main/images/user_img.png' %}"
+                        alt="user image"
+                        class="profile__img"
+                    />
+                {% endif %}
+                </div>
+                <div class="profile__information__item additional__inforamtion">
+                    <p class="profile__information__text">
+                        Age: {{ user.age }} year{{ user.age|pluralize }}
+                    </p>
+                    <p class="profile__information__text">
+                        Country: {{ user.country.name }}
+                    </p>
+                    <p class="profile__information__text">
+                        Gender: {{ user.gender }}
+                    </p>
+                    <div class="content__item__raiting">
+                        {% for i in user.raiting|iterable %}
+                        <button class="raiting__item">★</button>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="profile__information__item profile__controls">
+                    <button class="profile__button update">
+                        Update profile
+                    </button>
+                    <a href="{% url 'logout' %}" class="profile__button update">Log out</a>
+                    <a href="{% url 'delete_profile' slug=user.slug %}" class="profile__button delete">
+                        Delete profile
+                    </a>
+                </div>
             </div>
-            <div class="profile__information__item additional__inforamtion">
-              <p class="profile__information__text">
-                Age: {{ user.age }} year{{ user.age|pluralize }}
-              </p>
-              <p class="profile__information__text">Country: {{ user.country.name }}</p>
-              <p class="profile__information__text">Gender: {{ user.gender }}</p>
-              <div class="content__item__raiting">
-              {% for i in user.raiting|iterable %}
-                <button class="raiting__item">★</button>
-              {% endfor %}
-              </div>
-            </div>
-            <div class="profile__information__item profile__controls">
-              <button class="profile__button update">Update profile</button>
-              <button class="profile__button delete">Delete profile</button>
-            </div>
-          </div>
         </div>
-      </div>
     </div>
+</div>
 
-    {% if user.tests %}
-    <!-- Content -->
-    <div class="content">
-      <div class="container">
+{% if user.tests %}
+<!-- Content -->
+<div class="content">
+    <div class="container">
         <div class="content__inner">
-        {% for test in user.tests.all %}
-          <div class="content__item">
-            <h4 class="content__item__title">{{ test.title }}</h4>
-            <img
-              src="{{ test.image.url }}"
-              alt="test image"
-              class="content__item__img"
-            />
-            <div class="content__item__information">
-              <p class="content__item__author">Author: {{ test.author }}</p>
-              <p class="content__item__description">
-                {{ test.description|truncatechars:100 }}
-              </p>
-              <div class="content__item__raiting">
-              {% for i in test.raiting|iterable %}
-                <button class="raiting__item">★</button>
-              {% endfor %}
-              </div>
-              <div
-                style="
-                  display: flex;
-                  justify-content: space-between;
-                  align-items: center;
-                "
-              >
-                <p class="content__item__complexity">
-                  Complexity: <span style="font-size: 17px">{{ test.difficulty }}</span>
-                </p>
-                <a href="{{ test.get_absolute_url }}" class="content__item__button">Go!</a>
-                <a
-                  href="#"
-                  class="content__item__button"
-                  style="background-color: rgb(168, 28, 28)"
-                  >Delete</a
-                >
-                <a href="#" class="content__item__button">Update</a>
-              </div>
+            {% for test in user.tests.all %}
+            <div class="content__item">
+                <h4 class="content__item__title">{{ test.title }}</h4>
+                <img
+                    src="{{ test.image.url }}"
+                    alt="test image"
+                    class="content__item__img"
+                />
+                <div class="content__item__information">
+                    <p class="content__item__author">
+                        Author: {{ test.author }}
+                    </p>
+                    <p class="content__item__description">
+                        {{ test.description|truncatechars:100 }}
+                    </p>
+                    <div class="content__item__raiting">
+                        {% for i in test.raiting|iterable %}
+                        <button class="raiting__item">★</button>
+                        {% endfor %}
+                    </div>
+                    <div
+                        style="
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                        "
+                    >
+                        <p class="content__item__complexity">
+                            Complexity:
+                            <span style="font-size: 17px"
+                                >{{ test.difficulty }}</span
+                            >
+                        </p>
+                        <a
+                            href="{{ test.get_absolute_url }}"
+                            class="content__item__button"
+                            >Go!</a
+                        >
+                        <a
+                            href="#"
+                            class="content__item__button"
+                            style="background-color: rgb(168, 28, 28)"
+                            >Delete</a
+                        >
+                        <a href="#" class="content__item__button">Update</a>
+                    </div>
+                </div>
             </div>
-          </div>
-        {% endfor %}
+            {% endfor %}
         </div>
-      </div>
     </div>
-    {% endif %}
+</div>
+{% endif %}
+
 {% endblock content %}

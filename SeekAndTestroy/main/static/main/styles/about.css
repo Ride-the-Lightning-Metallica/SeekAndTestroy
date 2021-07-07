@@ -1,14 +1,15 @@
 /* About
 ====================== */
 .about__inner {
-  padding: 150px 0 40px;
-  text-align: center;
+    padding: 140px 0 40px;
+    text-align: center;
+    min-height: calc(100vh - 175px);
 }
 
 .about__information {
-  padding: 25px 0;
-  line-height: 20px;
-  font-weight: 600;
-  letter-spacing: 1px;
-  opacity: 1;
+    padding: 20px 0;
+    line-height: 20px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    opacity: 1;
 }

@@ -1,0 +1,20 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+
+{% block additional_style %}
+    <link rel="stylesheet" href="{% static 'main/styles/confirm_delete.css' %}" />
+{% endblock additional_style %}
+
+{% block content %}
+<div class="delete">
+    <div class="container">
+        <div class="delete__inner">
+            <form method="POST">
+                {% csrf_token %}
+                <h1 class="title">Are you sure you want to delete "{{ object }}"?</h1>
+                <input type="submit" value="Confirm" class="delete__button">
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}

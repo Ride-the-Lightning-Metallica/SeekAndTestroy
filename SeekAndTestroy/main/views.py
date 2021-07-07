@@ -1,9 +1,11 @@
 from django.shortcuts import render
-from django.views.generic import DetailView, ListView
+from django.urls import reverse_lazy
+from django.views.generic import DetailView, ListView, CreateView, DeleteView
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView, LogoutView
 
-from main.models import Test, Category
+from .models import Test, Category, User
+from .forms import UserRegistrationForm
 
 def add_in_context(context):
     categories = Category.objects.all()
@@ -49,10 +51,27 @@ def about(request):
 
 @login_required
 def profile(request):
-    return render(request, r'main\profile.html', {})
+    context = add_in_context({})
+    return render(request, r'main\profile.html', context)
 
 class UserLoginView(LoginView):
     template_name = 'main/login.html'
+    redirect_authenticated_user = True
+
+class UserLogoutView(LogoutView):
+    next_page = 'main'
+
+class UserRegistration(CreateView):
+    model = User
+    template_name = 'main/registration.html'
+    form_class = UserRegistrationForm
+    success_url = reverse_lazy('profile')
+    
+class UserDeleteView(DeleteView):
+    model = User
+    template_name = 'main/confirm_delete.html'
+    success_url = reverse_lazy('main')
+    
 
 def archive(request):
     return render(request, r'main\archive.html', {})
