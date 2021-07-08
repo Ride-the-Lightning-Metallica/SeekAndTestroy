@@ -45,9 +45,12 @@
                     </div>
                 </div>
                 <div class="profile__information__item profile__controls">
-                    <button class="profile__button update">
+                    <a href="{% url 'change_password' %}" class="profile__button update">
+                        Change password
+                    </a>
+                    <a href="{% url 'profile_update' slug=user.slug %}" class="profile__button update">
                         Update profile
-                    </button>
+                    </a>
                     <a href="{% url 'logout' %}" class="profile__button update">Log out</a>
                     <a href="{% url 'delete_profile' slug=user.slug %}" class="profile__button delete">
                         Delete profile

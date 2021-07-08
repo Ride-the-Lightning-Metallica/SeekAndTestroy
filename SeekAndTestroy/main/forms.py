@@ -1,20 +1,23 @@
 from django import forms
 from django.contrib.auth import password_validation
 from django.core.exceptions import ValidationError
+from django.utils.text import slugify
 
 from .models import User
 
+
 class UserRegistrationForm(forms.ModelForm):
     password = forms.CharField(
-        label='Password', 
+        label='Password',
         widget=forms.PasswordInput,
         help_text=password_validation.password_validators_help_text_html
     )
-    repeat_password = forms.CharField(label='Repeat password', widget=forms.PasswordInput)
+    repeat_password = forms.CharField(
+        label='Repeat password', widget=forms.PasswordInput)
 
     def clean_password(self):
         password = self.cleaned_data["password"]
-        
+
         if password:
             password_validation.validate_password(password)
 
@@ -40,6 +43,7 @@ class UserRegistrationForm(forms.ModelForm):
         user.set_password(self.cleaned_data['password'])
         user.is_active = True
         user.is_activated = True
+        user.slug = slugify(self.cleaned_data['username'])
 
         if commit:
             user.save()

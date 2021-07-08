@@ -4,7 +4,6 @@ from django.contrib.auth.models import AbstractUser
 from django_countries.fields import CountryField
 from django.contrib.postgres.fields import ArrayField
 from django.shortcuts import reverse
-from django.utils.text import slugify
 
 
 class User(AbstractUser):
@@ -34,11 +33,6 @@ class User(AbstractUser):
 
     def __str__(self):
         return self.username
-
-    def save(self, *args, **kwargs):
-        if self.pk:
-            self.slug = slugify(self.username)
-        super(User, self).save(*args, **kwargs)
 
 
 class Category(models.Model):

@@ -1,0 +1,57 @@
+.update__inner {
+    padding: 150px 0 40px;
+    text-align: center;
+    min-height: calc(100vh - 175px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form {
+    width: auto;
+}
+
+form p {
+    margin-bottom: 15px;
+    text-align: end;
+}
+
+label {
+    font-size: 17px;
+}
+
+input {
+    border-radius: 3px;
+    border: none;
+    font-family: 'raleway';
+    font-size: 16px;
+    padding: 7px 4px;
+    margin-left: 5px;
+    outline: none;
+    border: 2px solid #222228;
+}
+
+input[type="file"] {
+    width: 280px;
+}
+
+.helptext {
+    display: none;
+}
+
+.update__inner__button {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: rgb(70, 182, 42);
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    font-size: 17px;
+    color: #fff;
+
+    transition: background-color 0.2s ease-out;
+}
+
+.update__inner__button:hover {
+    background-color: rgb(63, 161, 38);
+}

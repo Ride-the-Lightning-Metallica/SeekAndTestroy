@@ -1,0 +1,21 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+
+{% block additional_style %}
+    <link rel="stylesheet" href="{% static 'main/styles/profile_update.css' %}" />
+{% endblock additional_style %}
+
+{% block content %}
+    <div class="update">
+        <div class="container">
+            <div class="update__inner">
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+
+                    {{ form.as_p }}
+                    <input type="submit" value="Change" class="update__inner__button">
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

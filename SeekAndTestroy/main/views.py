@@ -1,17 +1,20 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import DetailView, ListView, CreateView, DeleteView
+from django.views.generic import DetailView, ListView, CreateView, DeleteView, UpdateView
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView
+from django.contrib.auth import authenticate, login
 
 from .models import Test, Category, User
 from .forms import UserRegistrationForm
+
 
 def add_in_context(context):
     categories = Category.objects.all()
     context['categories'] = categories
 
     return context
+
 
 class TestListView(ListView):
     model = Test
@@ -23,6 +26,7 @@ class TestListView(ListView):
         context = add_in_context(super().get_context_data(**kwargs))
         return context
 
+
 class TestDetailView(DetailView):
     model = Test
     template_name = "main/test_detail.html"
@@ -30,6 +34,7 @@ class TestDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = add_in_context(super().get_context_data(**kwargs))
         return context
+
 
 class TestListByCategory(ListView):
     model = Test
@@ -49,31 +54,57 @@ class TestListByCategory(ListView):
 def about(request):
     return render(request, r'main\about.html')
 
+
 @login_required
 def profile(request):
     context = add_in_context({})
     return render(request, r'main\profile.html', context)
 
+
 class UserLoginView(LoginView):
     template_name = 'main/login.html'
     redirect_authenticated_user = True
 
+
 class UserLogoutView(LogoutView):
     next_page = 'main'
+
 
 class UserRegistration(CreateView):
     model = User
     template_name = 'main/registration.html'
     form_class = UserRegistrationForm
     success_url = reverse_lazy('profile')
-    
+
+    def form_valid(self, form):
+        valid = super(UserRegistration, self).form_valid(form)
+        username, password = (
+            form.cleaned_data.get('username'),
+            form.cleaned_data.get('password')
+        )
+        new_user = authenticate(username=username, password=password)
+        login(self.request, new_user)
+
+        return valid
+
+
+class UserUpdateView(UpdateView):
+    model = User
+    fields = ('username', 'email', 'age', 'image', 'gender', 'country')
+    template_name = 'main/profile_update.html'
+    success_url = reverse_lazy('profile')
+
+
 class UserDeleteView(DeleteView):
     model = User
     template_name = 'main/confirm_delete.html'
     success_url = reverse_lazy('main')
-    
+
+
+class UserChangePasswordView(PasswordChangeView):
+    template_name = 'main/change_password.html'
+    success_url = reverse_lazy('profile')
+
 
 def archive(request):
     return render(request, r'main\archive.html', {})
-
-

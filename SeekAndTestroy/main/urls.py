@@ -7,6 +7,16 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     path('profile/', views.profile, name='profile'),
     path(
+        'profile/update/<slug:slug>/',
+        views.UserUpdateView.as_view(),
+        name='profile_update'
+    ),
+    path(
+        'profile/change/password/',
+        views.UserChangePasswordView.as_view(),
+        name='change_password'
+    ),
+    path(
         'profile/delete/<slug:slug>/',
         views.UserDeleteView.as_view(),
         name='delete_profile'
