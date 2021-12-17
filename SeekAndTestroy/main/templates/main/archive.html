@@ -1,5 +1,6 @@
 {% extends 'layout/base.html' %}
 {% load static %}
+{% load filters %}
 
 {% block additional_style %}
   <link rel="stylesheet" href="{% static 'main/styles/archive.css' %}" />
@@ -29,83 +30,17 @@
           </div>
           <div class="sorted_by">
             <h5 class="sorted_by__title">Category:</h5>
-            <button class="sorted_by__button">Math</button>
-            <button class="sorted_by__button">Natural</button>
+            {% for category in categories %}
+              <button class="sorted_by__button">{{ category.title }}</button>
+            {% endfor %}
           </div>
           <div class="sorted_by">
             <h5 class="sorted_by__title">First letter:</h5>
-            <button class="sorted_by__button sorted_by__button--letter">
-              A
-            </button>
-            <button class="sorted_by__button sorted_by__button--letter">
-              B
-            </button>
-            <button class="sorted_by__button sorted_by__button--letter">
-              B
-            </button>
-            <button class="sorted_by__button sorted_by__button--letter">
-              B
-            </button>
-            <button class="sorted_by__button sorted_by__button--letter">
-              B
-            </button>
-            <button class="sorted_by__button sorted_by__button--letter">
-              B
-            </button>
-            <button class="sorted_by__button sorted_by__button--letter">
-              B
-            </button>
-            <button class="sorted_by__button sorted_by__button--letter">
-              B
-            </button>
-            <button class="sorted_by__button sorted_by__button--letter">
-              B
-            </button>
-            <button class="sorted_by__button sorted_by__button--letter">
-              B
-            </button>
-            <button class="sorted_by__button sorted_by__button--letter">
-              B
-            </button>
-            <button class="sorted_by__button sorted_by__button--letter">
-              B
-            </button>
-            <button class="sorted_by__button sorted_by__button--letter">
-              B
-            </button>
-            <button class="sorted_by__button sorted_by__button--letter">
-              B
-            </button>
-            <button class="sorted_by__button sorted_by__button--letter">
-              B
-            </button>
-            <button class="sorted_by__button sorted_by__button--letter">
-              B
-            </button>
-            <button class="sorted_by__button sorted_by__button--letter">
-              B
-            </button>
-            <button class="sorted_by__button sorted_by__button--letter">
-              B
-            </button>
-            <button class="sorted_by__button sorted_by__button--letter">
-              B
-            </button>
-            <button class="sorted_by__button sorted_by__button--letter">
-              B
-            </button>
-            <button class="sorted_by__button sorted_by__button--letter">
-              B
-            </button>
-            <button class="sorted_by__button sorted_by__button--letter">
-              B
-            </button>
-            <button class="sorted_by__button sorted_by__button--letter">
-              B
-            </button>
-            <button class="sorted_by__button sorted_by__button--letter">
-              B
-            </button>
+            {% for letter in ascii_uppercase %}
+              <button class="sorted_by__button sorted_by__button--letter">
+                {{ letter }}
+              </button>
+            {% endfor %}
           </div>
         </div>
       </div>
@@ -115,146 +50,40 @@
     <div class="content">
       <div class="container">
         <div class="content__inner">
-          <div class="content__item">
-            <h4 class="content__item__title">Title of test</h4>
-            <img
-              src="images/test_image.jpg"
-              alt="test image"
-              class="content__item__img"
-            />
-            <div class="content__item__information">
-              <p class="content__item__author">Author: Metallica</p>
-              <p class="content__item__description">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Inventore, doloribus. Debitis nam quia aspernatur, impedit ipsum
-                earum distinctio saepe! Rerum.
-              </p>
-              <div class="content__item__raiting">
-                <button class="raiting__item">★</button>
-                <button class="raiting__item">★</button>
-                <button class="raiting__item">★</button>
-                <button class="raiting__item">★</button>
-                <button class="raiting__item">★</button>
-              </div>
-              <div
-                style="
-                  display: flex;
-                  justify-content: space-between;
-                  align-items: center;
-                "
-              >
-                <p class="content__item__complexity">
-                  Complexity: <span style="font-size: 17px">3</span>
+          {% for test in tests %}
+            <div class="content__item">
+              <h4 class="content__item__title">{{ test.title }}</h4>
+              <img
+                src="{{ test.image.url }}"
+                alt="test image"
+                class="content__item__img"
+              />
+              <div class="content__item__information">
+                <p class="content__item__author">Author: {{ test.author|capfirst }}</p>
+                <p class="content__item__author">Category: {{ test.category }}</p>
+                <p class="content__item__description">
+                  {{ test.description|truncatechars:100 }}
                 </p>
-                <a href="#" class="content__item__button">Go!</a>
+                <div class="content__item__raiting">
+                  {% for i in test.raiting|iterable %}
+                  <button class="raiting__item">★</button>
+                  {% endfor %}
+                </div>
+                <div
+                  style="
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                  "
+                >
+                  <p class="content__item__complexity">
+                    Complexity: <span style="font-size: 17px">{{ test.difficulty }}</span>
+                  </p>
+                  <a href="{{ test.get_absolute_url }}" class="content__item__button">Go!</a>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="content__item">
-            <h4 class="content__item__title">Title of test</h4>
-            <img
-              src="images/test_image.jpg"
-              alt="test image"
-              class="content__item__img"
-            />
-            <div class="content__item__information">
-              <p class="content__item__author">Author: Metallica</p>
-              <p class="content__item__description">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Inventore, doloribus. Debitis nam quia aspernatur, impedit ipsum
-                earum distinctio saepe! Rerum.
-              </p>
-              <div class="content__item__raiting">
-                <button class="raiting__item">★</button>
-                <button class="raiting__item">★</button>
-                <button class="raiting__item">★</button>
-                <button class="raiting__item">★</button>
-                <button class="raiting__item">★</button>
-              </div>
-              <div
-                style="
-                  display: flex;
-                  justify-content: space-between;
-                  align-items: center;
-                "
-              >
-                <p class="content__item__complexity">
-                  Complexity: <span style="font-size: 17px">3</span>
-                </p>
-                <a href="#" class="content__item__button">Go!</a>
-              </div>
-            </div>
-          </div>
-          <div class="content__item">
-            <h4 class="content__item__title">Title of test</h4>
-            <img
-              src="images/test_image.jpg"
-              alt="test image"
-              class="content__item__img"
-            />
-            <div class="content__item__information">
-              <p class="content__item__author">Author: Metallica</p>
-              <p class="content__item__description">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Inventore, doloribus. Debitis nam quia aspernatur, impedit ipsum
-                earum distinctio saepe! Rerum.
-              </p>
-              <div class="content__item__raiting">
-                <button class="raiting__item">★</button>
-                <button class="raiting__item">★</button>
-                <button class="raiting__item">★</button>
-                <button class="raiting__item">★</button>
-                <button class="raiting__item">★</button>
-              </div>
-              <div
-                style="
-                  display: flex;
-                  justify-content: space-between;
-                  align-items: center;
-                "
-              >
-                <p class="content__item__complexity">
-                  Complexity: <span style="font-size: 17px">3</span>
-                </p>
-                <a href="#" class="content__item__button">Go!</a>
-              </div>
-            </div>
-          </div>
-          <div class="content__item">
-            <h4 class="content__item__title">Title of test</h4>
-            <img
-              src="images/test_image.jpg"
-              alt="test image"
-              class="content__item__img"
-            />
-            <div class="content__item__information">
-              <p class="content__item__author">Author: Metallica</p>
-              <p class="content__item__description">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Inventore, doloribus. Debitis nam quia aspernatur, impedit ipsum
-                earum distinctio saepe! Rerum.
-              </p>
-              <div class="content__item__raiting">
-                <button class="raiting__item">★</button>
-                <button class="raiting__item">★</button>
-                <button class="raiting__item">★</button>
-                <button class="raiting__item">★</button>
-                <button class="raiting__item">★</button>
-              </div>
-              <div
-                style="
-                  display: flex;
-                  justify-content: space-between;
-                  align-items: center;
-                "
-              >
-                <p class="content__item__complexity">
-                  Complexity: <span style="font-size: 17px">3</span>
-                </p>
-                <a href="#" class="content__item__button">Go!</a>
-              </div>
-            </div>
-          </div>
+          {% endfor %}
         </div>
       </div>
     </div>
