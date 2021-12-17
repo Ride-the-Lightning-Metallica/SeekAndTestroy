@@ -24,7 +24,7 @@ urlpatterns = [
     path('login/', views.UserLoginView.as_view(), name='login'),
     path('logout/', views.UserLogoutView.as_view(), name='logout'),
     path('registration/', views.UserRegistration.as_view(), name='registration'),
-    path('archive/', views.archive, name='archive'),
+    path('archive/', views.ArchiveListView.as_view(), name='archive'),
     path('test/<slug:slug>/', views.TestDetailView.as_view(), name='test_detail'),
     path('category/<slug:slug>/',
          views.TestListByCategory.as_view(), name='by_category')

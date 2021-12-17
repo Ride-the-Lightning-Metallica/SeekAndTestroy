@@ -61,6 +61,9 @@
                     <p class="content__item__author">
                         Author: {{ test.author|capfirst }}
                     </p>
+                    <p class="content__item__author">
+                        Category: {{ test.category }}
+                    </p>
                     <p class="content__item__description">
                         {{ test.description|truncatechars:100 }}
                     </p>

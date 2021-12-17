@@ -5,11 +5,13 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView
 from django.contrib.auth import authenticate, login
 
+from string import ascii_uppercase
+
 from .models import Test, Category, User
 from .forms import UserRegistrationForm
 
 
-def add_in_context(context):
+def add_in_context(context):  # TODO: make as decorator
     categories = Category.objects.all()
     context['categories'] = categories
 
@@ -38,7 +40,7 @@ class TestDetailView(DetailView):
 
 class TestListByCategory(ListView):
     model = Test
-    template_name = "main/main.html"
+    template_name = 'main/main.html'
     context_object_name = 'tests'
 
     def get_queryset(self):
@@ -106,5 +108,14 @@ class UserChangePasswordView(PasswordChangeView):
     success_url = reverse_lazy('profile')
 
 
-def archive(request):
-    return render(request, r'main\archive.html', {})
+class ArchiveListView(ListView):
+    model = Test
+    template_name = r'main\archive.html'
+    context_object_name = 'tests'
+    paginate_by = 3
+
+    def get_context_data(self, **kwargs):
+        context = add_in_context(super().get_context_data(**kwargs))
+        context['ascii_uppercase'] = ascii_uppercase
+
+        return context
