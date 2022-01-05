@@ -11,31 +11,16 @@ from .models import Test, Category, User
 from .forms import UserRegistrationForm
 
 
-def add_in_context(context):  # TODO: make as decorator
-    categories = Category.objects.all()
-    context['categories'] = categories
-
-    return context
-
-
 class TestListView(ListView):
     model = Test
     template_name = "main/main.html"
     context_object_name = 'tests'
     paginate_by = 3
 
-    def get_context_data(self, **kwargs):
-        context = add_in_context(super().get_context_data(**kwargs))
-        return context
-
 
 class TestDetailView(DetailView):
     model = Test
     template_name = "main/test_detail.html"
-
-    def get_context_data(self, **kwargs):
-        context = add_in_context(super().get_context_data(**kwargs))
-        return context
 
 
 class TestListByCategory(ListView):
@@ -47,7 +32,7 @@ class TestListByCategory(ListView):
         return Test.objects.filter(category__slug=self.kwargs['slug'])
 
     def get_context_data(self, **kwargs):
-        context = add_in_context(super().get_context_data(**kwargs))
+        context = super().get_context_data(**kwargs)
         context['category'] = Category.objects.get(slug=self.kwargs['slug'])
         context['is_category_page'] = True
         return context
@@ -59,8 +44,7 @@ def about(request):
 
 @login_required
 def profile(request):
-    context = add_in_context({})
-    return render(request, r'main\profile.html', context)
+    return render(request, r'main\profile.html')
 
 
 class UserLoginView(LoginView):
@@ -115,7 +99,7 @@ class ArchiveListView(ListView):
     paginate_by = 3
 
     def get_context_data(self, **kwargs):
-        context = add_in_context(super().get_context_data(**kwargs))
+        context = super().get_context_data(**kwargs)
         context['ascii_uppercase'] = ascii_uppercase
 
         return context
