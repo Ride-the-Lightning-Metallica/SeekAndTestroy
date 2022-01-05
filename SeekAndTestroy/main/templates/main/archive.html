@@ -2,6 +2,7 @@
 {% load static %}
 {% load filters %}
 
+
 {% block additional_style %}
   <link rel="stylesheet" href="{% static 'main/styles/archive.css' %}" />
 {% endblock additional_style %}
@@ -36,7 +37,7 @@
           </div>
           <div class="sorted_by">
             <h5 class="sorted_by__title">First letter:</h5>
-            {% for letter in ascii_uppercase %}
+            {% for letter in ''|ascii_uppercase %}
               <button class="sorted_by__button sorted_by__button--letter">
                 {{ letter }}
               </button>

@@ -97,9 +97,3 @@ class ArchiveListView(ListView):
     template_name = r'main\archive.html'
     context_object_name = 'tests'
     paginate_by = 3
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['ascii_uppercase'] = ascii_uppercase
-
-        return context
