@@ -13,7 +13,7 @@ navLinks.forEach((link) => {
 let testCategoryLink = document.getElementById('testCategoryLink');
 let navMenu = document.getElementById('navMenu');
 
-testCategoryLink.addEventListener('click', function (event) {
+testCategoryLink.addEventListener('click', function(event) {
   if (navMenu.style.display === 'block') {
     navMenu.style.display = 'none';
     testCategoryLink.innerHTML =

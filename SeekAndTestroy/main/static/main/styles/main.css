@@ -26,6 +26,12 @@
     border: 2px solid #222228;
 }
 
+.intro__search__button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
 .intro__search__img {
     margin-left: 8px;
 }

@@ -4,8 +4,9 @@ from django.views.generic import DetailView, ListView, CreateView, DeleteView, U
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView
 from django.contrib.auth import authenticate, login
+from django.http import JsonResponse
+from django.db.models import Q
 
-from string import ascii_uppercase
 
 from .models import Test, Category, User
 from .forms import UserRegistrationForm
@@ -13,9 +14,24 @@ from .forms import UserRegistrationForm
 
 class TestListView(ListView):
     model = Test
-    template_name = "main/main.html"
+    template_name = 'main/main.html'
     context_object_name = 'tests'
     paginate_by = 3
+
+    def post(self, request):
+        key = request.POST.get('key')
+        fields_names = [
+            'title', 'image', 'author__username',
+            'category__title', 'description', 'difficulty'
+        ]
+        tests = self.get_queryset().values(*fields_names)
+        tests = tests.filter(
+            Q(title__icontains=key) |
+            Q(author__username__icontains=key) |
+            Q(description__icontains=key)
+        )
+
+        return JsonResponse({'tests': list(tests)}, safe=False)
 
 
 class TestDetailView(DetailView):

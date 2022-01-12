@@ -12,20 +12,20 @@
 <div class="intro">
     <div class="container">
         <div class="intro__inner">
-            <div class="intro__search">
+            <form class="intro__search" id="searchForm" method="POST">
+                {% csrf_token %}
                 <input
                     type="text"
                     class="intro__search__field"
+                    id="searchField"
                     placeholder="Search test"
                 />
                 <div class="intro__search__img">
-                    <a href="#"
-                        ><img
-                            src="{% static 'main/images/loupe.png' %}"
-                            alt="loupe"
-                    /></a>
+                    <button class="intro__search__button">
+                        <img src="{% static 'main/images/loupe.png' %}" alt="loupe"/>
+                    </button>
                 </div>
-            </div>
+            </form>
             <h2 class="title">
                 {% if is_category_page %}
                     Tests in the category "{{ category.title }}"
@@ -123,5 +123,7 @@
         </div>
     </div>
 </div>
+<script src="http://twitter.github.io/hogan.js/builds/3.0.1/hogan-3.0.1.js"></script>
+<script src="{% static 'main/js/main.js' %}"></script>
 
 {% endblock content %}
